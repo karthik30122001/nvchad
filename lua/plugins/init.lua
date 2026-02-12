@@ -12,7 +12,21 @@ return {
       require "configs.lspconfig"
     end,
   },
-
+  -- HTML auto-tag plugins
+  {
+    'windwp/nvim-ts-autotag',
+    ft = { 'html', 'javascript', 'typescript', 'javascriptreact', 'typescriptreact', 'svelte', 'vue' },
+    config = function()
+      require('nvim-ts-autotag').setup()
+    end
+  },
+  {
+    'kylechui/nvim-surround',
+    event = 'VeryLazy',
+    config = function()
+      require('nvim-surround').setup()
+    end
+  },
   -- test new blink
   -- { import = "nvchad.blink.lazyspec" },
 
