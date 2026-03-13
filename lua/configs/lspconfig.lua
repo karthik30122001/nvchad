@@ -101,24 +101,39 @@ vim.lsp.config("lua_ls", {
 })
 
 -------------------------------------------------------
--- Python (pylsp)
+-- Python (pyright/pylsp)
 -------------------------------------------------------
-vim.lsp.config("pylsp", {
+-- vim.lsp.config("pylsp", {
+--   capabilities = capabilities,
+--   on_attach = on_attach,
+--   settings = {
+--     pylsp = {
+--       plugins = {
+--         jedi_completion = { enabled = true },
+--         jedi_definition = { enabled = true },
+--         jedi_hover = { enabled = true },
+--         jedi_references = { enabled = true },
+--         jedi_signature_help = { enabled = true },
+--       },
+--     },
+--   },
+-- })
+
+-- Add pyright config
+vim.lsp.config("pyright", {
   capabilities = capabilities,
   on_attach = on_attach,
   settings = {
-    pylsp = {
-      plugins = {
-        jedi_completion = { enabled = true },
-        jedi_definition = { enabled = true },
-        jedi_hover = { enabled = true },
-        jedi_references = { enabled = true },
-        jedi_signature_help = { enabled = true },
+    python = {
+      analysis = {
+        autoSearchPaths = true,
+        useLibraryCodeForTypes = true,
+        diagnosticMode = "workspace",
+        typeCheckingMode = "basic",  -- or "off" if too strict
       },
     },
   },
 })
-
 -------------------------------------------------------
 -- ENABLE (always last)
 -------------------------------------------------------
@@ -130,6 +145,6 @@ vim.lsp.enable({
   "eslint",
   "ts_ls",
   "lua_ls",
-  "pylsp",
+  "pyright",
 })
 

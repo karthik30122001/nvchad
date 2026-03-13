@@ -27,6 +27,18 @@ return {
       require('nvim-surround').setup()
     end
   },
+  -- Session persistence per folder
+  {
+    'rmagatti/auto-session',
+    lazy = false,
+    config = function()
+      require("auto-session").setup({
+        auto_restore_enabled = true,
+        auto_save_enabled = true,
+        auto_create = true,
+      })
+    end,
+  },
   -- test new blink
   -- { import = "nvchad.blink.lazyspec" },
 

@@ -2,7 +2,7 @@ require "nvchad.options"
 
 -- add yours here!
 
-vim.opt.autochdir = true
+-- vim.opt.autochdir = true
 -- local o = vim.o
 -- o.cursorlineopt ='both' -- to enable cursorline!
 --
