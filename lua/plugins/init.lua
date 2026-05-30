@@ -41,14 +41,36 @@ return {
   },
   -- test new blink
   -- { import = "nvchad.blink.lazyspec" },
-
-  -- {
-  -- 	"nvim-treesitter/nvim-treesitter",
-  -- 	opts = {
-  -- 		ensure_installed = {
-  -- 			"vim", "lua", "vimdoc",
-  --      "html", "css"
-  -- 		},
-  -- 	},
-  -- },
+  -- Comment Plugin with tsx context extention
+  {
+    "numToStr/Comment.nvim",
+    dependencies = {
+      "JoosepAlviste/nvim-ts-context-commentstring",
+    },
+    config = function()
+      require("ts_context_commentstring").setup({
+        enable_autocmd = false,
+      })
+      require("Comment").setup({
+        pre_hook = require(
+          "ts_context_commentstring.integrations.comment_nvim"
+        ).create_pre_hook(),
+      })
+    end,
+  },
+  --
+  {
+    "nvim-treesitter/nvim-treesitter",
+    branch = "main",
+    build = ':TSUpdate',
+    config = function()
+      require("nvim-treesitter").setup({})
+      require("nvim-treesitter").install({
+        "vim", "lua", "vimdoc",
+        "html", "css",
+        "typescript", "tsx",
+        "javascript",
+      })
+    end,
+  },
 }
